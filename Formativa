@@ -1,0 +1,78 @@
+create database hogwarts;
+use hogwarts;
+
+create table user(
+id_user bigint not null auto_increment,
+nome varchar(60) not null,
+email varchar(120) not null,
+data_nasc datetime not null,
+senha varchar(60) not null,
+ocupacao varchar(30) not null,
+data_create datetime default now(),
+estado boolean not null , 
+primary key(id_user)
+);
+
+insert into user (nome,email,data_nasc,senha,ocupacao,estado) values 
+("Haris Proter","haris@gmail.com","2004-02-02 00:00:00","1234","Coordenador",True),
+("Alves Dunbledor","alves@gmail.com","2002-04-03 00:00:00","alves123","Orientador",True),
+("Hermison Grande","hermison@gmail.com","2005-01-07 00:00:00","h3rm1s0ngr4nd3123","Assistente Social",True),
+("Serio Snope","serio@gmail.com","2001-07-03 00:00:00","seriao61247","Secretária",True),
+("VaodoMorte","vaodomorte@gmail.com","2003-02-010 00:00:00","death12461248","Aluno",True);
+
+
+
+create table local(
+id_local bigint not null auto_increment,
+nome_local varchar(45) not null,
+bloco varchar(1) not null,
+ocupation bigint not null,
+primary key(id_local)
+);
+insert into local(nome_local,bloco,ocupation) values ("Patio","Ginasio","Campo Quadribol"),("A","B","C"),("120","200","600");
+
+create table evento(
+id_event bigint not null auto_increment,
+evento_name varchar(120) not null,
+event_date datetime not null,
+locate_event bigint not null,
+event_start datetime not null,
+event_finish datetime not null,
+people_responsable bigint not null,
+quant_participantes bigint not null,
+vagas bigint not null,
+primary key(id_event),
+foreign key(locate_event) references local(id_local),
+foreign key(people_responsable) references user(id_user)
+);
+
+insert into evento(evento_name,event_date,locate_event,event_start,event_finish,people_responsable,quant_participantes,vagas) values 
+("Jogo Quadribol","2023-05-03 00:00:00",2,"2023-05-03 13:00:00","2023-05-03 23:00:00",1,450,450),
+("Encontro no Patio","2023-02-05 00:00:00",1,"2023-02-05 13:00:00","2023-05-03 23:00:00",2,200,190),
+("Pesquisa no Campo","2023-01-08 00:00:00",0,"2023-01-08 13:00:00","2023-01-08 23:00:00",3,100,120);
+
+create table itens(
+id bigint not null auto_increment,
+id_locate bigint not null,
+itens varchar(60) not null,
+primary key(id),
+foreign key(id_locate) references local(id_local)
+);
+
+create table rules(
+id_rules bigint not null auto_increment,
+rule_function varchar(45),
+primary key(id_rules),
+foreign key(id_rules) references user(id_user)
+);
+
+create table check_in_event(
+id bigint not null auto_increment,
+id_event bigint not null,
+name_user bigint not null,
+email_user bigint not null,
+date_check datetime default now(),
+primary key(id),
+foreign key(id_event) references evento(id_event)
+);
+
