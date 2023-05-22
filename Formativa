@@ -13,15 +13,6 @@ estado boolean not null ,
 primary key(id_user)
 );
 
-insert into user (nome,email,data_nasc,senha,ocupacao,estado) values 
-("Haris Proter","haris@gmail.com","2004-02-02 00:00:00","1234","Coordenador",True),
-("Alves Dunbledor","alves@gmail.com","2002-04-03 00:00:00","alves123","Orientador",True),
-("Hermison Grande","hermison@gmail.com","2005-01-07 00:00:00","h3rm1s0ngr4nd3123","Assistente Social",True),
-("Serio Snope","serio@gmail.com","2001-07-03 00:00:00","seriao61247","Secretária",True),
-("VaodoMorte","vaodomorte@gmail.com","2003-02-010 00:00:00","death12461248","Aluno",True);
-
-
-
 create table local(
 id_local bigint not null auto_increment,
 nome_local varchar(45) not null,
@@ -29,7 +20,6 @@ bloco varchar(1) not null,
 ocupation bigint not null,
 primary key(id_local)
 );
-insert into local(nome_local,bloco,ocupation) values ("Patio","Ginasio","Campo Quadribol"),("A","B","C"),("120","200","600");
 
 create table evento(
 id_event bigint not null auto_increment,
@@ -46,10 +36,6 @@ foreign key(locate_event) references local(id_local),
 foreign key(people_responsable) references user(id_user)
 );
 
-insert into evento(evento_name,event_date,locate_event,event_start,event_finish,people_responsable,quant_participantes,vagas) values 
-("Jogo Quadribol","2023-05-03 00:00:00",2,"2023-05-03 13:00:00","2023-05-03 23:00:00",1,450,450),
-("Encontro no Patio","2023-02-05 00:00:00",1,"2023-02-05 13:00:00","2023-05-03 23:00:00",2,200,190),
-("Pesquisa no Campo","2023-01-08 00:00:00",0,"2023-01-08 13:00:00","2023-01-08 23:00:00",3,100,120);
 
 create table itens(
 id bigint not null auto_increment,
@@ -76,3 +62,243 @@ primary key(id),
 foreign key(id_event) references evento(id_event)
 );
 
+
+INSERT INTO user (nome, email, data_nasc, senha, ocupacao, estado)
+VALUES ('Harry Potter', 'harry@gmail.com', '1980-07-31', 'senhapotter', 'Estudante', true);
+
+INSERT INTO user (nome, email, data_nasc, senha, ocupacao, estado)
+VALUES ('Minerva McGonagall', 'minerva@gmail.com', '1935-10-04', 'senhamcgonagall', 'Coordenador', true);
+
+INSERT INTO user (nome, email, data_nasc, senha, ocupacao, estado)
+VALUES ('Rubeus Hagrid', 'hagrid@gmail.com', '1928-12-06', 'senhahagrid', 'Assistente Social', true);
+
+INSERT INTO user (nome, email, data_nasc, senha, ocupacao, estado)
+VALUES ('Severus Snape', 'snape@gmail.com', '1960-01-09', 'senhasnape', 'Professor', true);
+
+INSERT INTO user (nome, email, data_nasc, senha, ocupacao, estado)
+VALUES ('Hermione Granger', 'hermione@gmail.com', '1979-09-19', 'senhahermione', 'Orientador', true);
+
+INSERT INTO user (nome, email, data_nasc, senha, ocupacao, estado)
+VALUES ('Albus Dumbledore', 'dumbledore@gmail.com', '1881-07-01', 'senhadumbledore', 'Diretor', true);
+
+INSERT INTO user (nome, email, data_nasc, senha, ocupacao, estado)
+VALUES ('Molly Weasley', 'molly@gmail.com', '1949-10-30', 'senhamolly', 'Secretária', true);
+
+INSERT INTO user (nome, email, data_nasc, senha, ocupacao, estado)
+VALUES ('Arthur Weasley', 'arthur@gmail.com', '1950-02-06', 'senhaarthur', 'Zelador', true);
+
+
+
+INSERT INTO local (nome_local, bloco, ocupation)
+VALUES ('Grande Salão', 'A', 500);
+
+INSERT INTO local (nome_local, bloco, ocupation)
+VALUES ('Sala dos Professores', 'B', 20);
+
+INSERT INTO local (nome_local, bloco, ocupation)
+VALUES ('Torre de Astronomia', 'C', 10);
+
+INSERT INTO local (nome_local, bloco, ocupation)
+VALUES ('Biblioteca', 'D', 100);
+
+INSERT INTO local (nome_local, bloco, ocupation)
+VALUES ('Campo de Quadribol', 'A', 1000);
+
+INSERT INTO local (nome_local, bloco, ocupation)
+VALUES ('Sala Comunal da Grifinória', 'B', 50);
+
+INSERT INTO local (nome_local, bloco, ocupation)
+VALUES ('Sala de Poções', 'C', 30);
+
+INSERT INTO local (nome_local, bloco, ocupation)
+VALUES ('Enfermaria', 'D', 10);
+
+
+
+INSERT INTO evento (evento_name, event_date, locate_event, event_start, event_finish, people_responsable, quant_participantes, vagas)
+VALUES ('Baile de Inverno', '2023-12-24', 1, '19:00:00', '23:00:00', 2, 100, 80);
+
+INSERT INTO evento (evento_name, event_date, locate_event, event_start, event_finish, people_responsable, quant_participantes, vagas)
+VALUES ('Reunião dos Professores', '2023-10-15', 2, '14:00:00', '17:00:00', 1, 30, 30);
+
+INSERT INTO evento (evento_name, event_date, locate_event, event_start, event_finish, people_responsable, quant_participantes, vagas)
+VALUES ('Aula de Herbologia', '2023-09-10', 3, '10:00:00', '12:00:00', 1, 50, 50);
+
+INSERT INTO evento (evento_name, event_date, locate_event, event_start, event_finish, people_responsable, quant_participantes, vagas)
+VALUES ('Treino de Quadribol', '2023-11-05', 5, '15:00:00', '17:00:00', 4, 60, 60);
+
+INSERT INTO evento (evento_name, event_date, locate_event, event_start, event_finish, people_responsable, quant_participantes, vagas)
+VALUES ('Clube de Duelos', '2023-09-20', 7, '18:00:00', '20:00:00', 5, 20, 20);
+
+INSERT INTO evento (evento_name, event_date, locate_event, event_start, event_finish, people_responsable, quant_participantes, vagas)
+VALUES ('Palestra sobre Magizoologia', '2023-10-30', 4, '16:00:00', '18:00:00', 2, 80, 80);
+
+INSERT INTO evento (evento_name, event_date, locate_event, event_start, event_finish, people_responsable, quant_participantes, vagas)
+VALUES ('Cerimônia de Premiação', '2023-07-15', 1, '20:00:00', '22:00:00', 6, 200, 180);
+
+INSERT INTO evento (evento_name, event_date, locate_event, event_start, event_finish, people_responsable, quant_participantes, vagas)
+VALUES ('Aula de Voo', '2023-09-05', 5, '14:00:00', '16:00:00', 4, 40, 40);
+
+
+
+INSERT INTO itens (id_locate, itens)
+VALUES (1, 'Cadeiras');
+
+INSERT INTO itens (id_locate, itens)
+VALUES (1, 'Mesas');
+
+INSERT INTO itens (id_locate, itens)
+VALUES (2, 'Cadeiras');
+
+INSERT INTO itens (id_locate, itens)
+VALUES (2, 'Mesa de Reunião');
+
+INSERT INTO itens (id_locate, itens)
+VALUES (3, 'Telescópios');
+
+INSERT INTO itens (id_locate, itens)
+VALUES (4, 'Livros');
+
+INSERT INTO itens (id_locate, itens)
+VALUES (5, 'Vassouras');
+
+INSERT INTO itens (id_locate, itens)
+VALUES (6, 'Projetor');
+
+
+INSERT INTO rules (rule_function)
+VALUES ('Admin');
+
+INSERT INTO rules (rule_function)
+VALUES ('Gestor');
+
+INSERT INTO rules (rule_function)
+VALUES ('Usuário');
+
+INSERT INTO rules (rule_function)
+VALUES ('Visitante');
+
+INSERT INTO rules (rule_function)
+VALUES ('Professor');
+
+INSERT INTO rules (rule_function)
+VALUES ('Aluno');
+
+INSERT INTO rules (rule_function)
+VALUES ('Funcionário');
+
+INSERT INTO rules (rule_function)
+VALUES ('Convidado');
+
+
+
+INSERT INTO check_in_event (id_event, name_user, email_user)
+VALUES (1, 1, 'harry@gmail.com');
+
+INSERT INTO check_in_event (id_event, name_user, email_user)
+VALUES (2, 3, 'hagrid@gmail.com');
+
+INSERT INTO check_in_event (id_event, name_user, email_user)
+VALUES (3, 5, 'hermione@gmail.com');
+
+INSERT INTO check_in_event (id_event, name_user, email_user)
+VALUES (4, 4, 'snape@gmail.com');
+
+INSERT INTO check_in_event (id_event, name_user, email_user)
+VALUES (5, 2, 'minerva@gmail.com');
+
+INSERT INTO check_in_event (id_event, name_user, email_user)
+VALUES (6, 6, 'dumbledore@gmail.com');
+
+INSERT INTO check_in_event (id_event, name_user, email_user)
+VALUES (7, 7, 'molly@gmail.com');
+
+INSERT INTO check_in_event (id_event, name_user, email_user)
+VALUES (8, 8, 'arthur@gmail.com');
+
+
+SELECT l.*
+FROM local l
+INNER JOIN evento e ON l.id_local = e.locate_event
+GROUP BY l.id_local;
+
+SELECT l.*
+FROM local l
+LEFT JOIN evento e ON l.id_local = e.locate_event
+WHERE e.id_event IS NULL;
+
+SELECT *
+FROM evento
+WHERE event_date >= 'data_inicial' AND event_date <= 'data_final';
+
+SELECT u.*
+FROM user u
+INNER JOIN check_in_event c ON u.id_user = c.name_user
+GROUP BY u.id_user;
+
+SELECT e.*, u.*
+FROM evento e
+LEFT JOIN check_in_event c ON e.id_event = c.id_event
+LEFT JOIN user u ON c.name_user = u.id_user
+WHERE e.event_start > NOW() OR c.id IS NULL;
+
+SELECT e.*, u.*
+FROM evento e
+INNER JOIN check_in_event c ON e.id_event = c.id_event
+INNER JOIN user u ON c.name_user = u.id_user
+WHERE e.event_start > NOW();
+
+SELECT u.nome, COUNT(c.id) AS quantidade_registros
+FROM user u
+LEFT JOIN check_in_event c ON u.id_user = c.name_user
+GROUP BY u.id_user;
+
+SELECT e.evento_name, COUNT(c.id) AS quantidade_checkin
+FROM evento e
+LEFT JOIN check_in_event c ON e.id_event = c.id_event
+GROUP BY e.id_event
+ORDER BY quantidade_checkin DESC
+LIMIT 1;
+
+SELECT e.evento_name, COUNT(c.id) AS quantidade_checkin
+FROM evento e
+LEFT JOIN check_in_event c ON e.id_event = c.id_event
+GROUP BY e.id_event
+ORDER BY quantidade_checkin ASC
+LIMIT 1;
+
+SELECT l.nome_local, AVG(e.quant_participantes) AS media_participantes
+FROM local l
+INNER JOIN evento e ON l.id_local = e.locate_event
+GROUP BY l.id_local;
+
+SELECT u.nome, r.rule_function AS perfil_acesso
+FROM user u
+LEFT JOIN rules r ON u.id_user = r.id_rules;
+
+SELECT *
+FROM evento
+WHERE vagas > 0
+  AND NOW() BETWEEN event_start AND event_finish;
+
+SELECT *
+FROM evento
+WHERE quant_participantes >= vagas
+  AND NOW() < event_start;
+
+SELECT *
+FROM evento
+WHERE vagas > quant_participantes
+  AND NOW() < event_start;
+
+SELECT *
+FROM evento
+WHERE vagas > 0
+  AND NOW() BETWEEN event_start AND event_finish;
+
+SELECT u.*
+FROM user u
+JOIN check_in_event c ON u.id_user = c.name_user
+WHERE u.data_create BETWEEN '2022-01-01' AND '2022-12-31'
+GROUP BY u.id_user
+HAVING COUNT(c.id) >= 2;
